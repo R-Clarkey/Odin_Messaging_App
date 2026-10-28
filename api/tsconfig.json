@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "types": ["node"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+  },
+  "paths": {
+    "@prisma/*": ["generated/prisma/*"]
+  },
+  "include": ["types/**/*.d.ts", "src/**/*.ts"]
+}
