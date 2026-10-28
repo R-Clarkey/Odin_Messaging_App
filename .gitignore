@@ -151,5 +151,5 @@ vite.config.ts.timestamp-*
 /generated/prisma
 
 
-/Notes/
-/generated/
+/Notes
+/generated
