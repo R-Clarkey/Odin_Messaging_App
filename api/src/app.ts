@@ -6,6 +6,7 @@ import { prisma } from './db/prisma'
 
 import authRoutes from "./routes/authRoutes"
 import userRoutes from "./routes/userRoutes"
+import conversationRoutes from "./routes/conversationRoutes"
 
 import { globalErrorHandler } from './middleware/errorMiddleware';
 
@@ -40,6 +41,7 @@ app.use(passport.session())
 
 app.use('/auth', authRoutes)
 app.use("/api/users", userRoutes)
+app.use("/api/conversations", conversationRoutes)
 
 app.get('/api/user', (req, res) => {
   if (!req.isAuthenticated()) {

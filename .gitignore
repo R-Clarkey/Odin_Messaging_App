@@ -152,4 +152,6 @@ vite.config.ts.timestamp-*
 
 
 /Notes
+Guide.txt
 /generated
+seed.ts
