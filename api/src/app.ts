@@ -1,14 +1,16 @@
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import session from 'express-session';
-import passport from './config/passport';
+import passport from './config/passport.ts';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store'
-import { prisma } from './db/prisma'
+import { prisma } from './db/prisma.ts'
+import cors from "cors";
 
-import authRoutes from "./routes/authRoutes"
-import userRoutes from "./routes/userRoutes"
-import conversationRoutes from "./routes/conversationRoutes"
 
-import { globalErrorHandler } from './middleware/errorMiddleware';
+import authRoutes from "./routes/authRoutes.ts"
+import userRoutes from "./routes/userRoutes.ts"
+import conversationRoutes from "./routes/conversationRoutes.ts"
+
+import { globalErrorHandler } from './middleware/errorMiddleware.ts';
 
 const app: Express = express()
 
@@ -36,19 +38,32 @@ app.use(
   })
 )
 
+const corsOrigins = process.env.CORS_ORIGINS
+
+if (!corsOrigins) {
+	throw new Error("CORS_ORIGINS must be set")
+}
+
+const allowedOrigins = corsOrigins
+	.split(",")
+	.map(origin => origin.trim())
+	.filter(Boolean)
+
+app.use(
+	cors({
+		origin: allowedOrigins,
+    credentials: true,
+		methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+	})
+)
+
 app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/auth', authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/conversations", conversationRoutes)
-
-app.get('/api/user', (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ error: 'Not authenticated' })
-  }
-  res.json(req.user)
-})
 
 app.use(globalErrorHandler)
 

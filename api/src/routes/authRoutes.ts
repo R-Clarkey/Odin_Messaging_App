@@ -1,7 +1,7 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 import passport from 'passport';
-import * as authController from '../controllers/authController';
-import { requireAuth } from '../middleware/authMiddleware';
+import * as authController from '../controllers/authController.ts';
+import { requireAuth } from '../middleware/authMiddleware.ts';
 
 const router = Router()
 
@@ -19,7 +19,7 @@ router.get('/login-failed', (req: Request, res: Response) => {
   res.status(401).json({ error: 'Login failed' });
 });
 
-router.get('/logout', authController.logout);
+router.post('/logout', authController.logout);
 
 router.get('/me', requireAuth, authController.getCurrentUser);
 

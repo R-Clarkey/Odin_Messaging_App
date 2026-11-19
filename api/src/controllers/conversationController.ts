@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import * as conversationService from "../services/conversationService"
-import { asyncHandler } from "../middleware/asyncHandler"
-import { prisma } from "../db/prisma";
+import { type Request, type Response } from 'express';
+import * as conversationService from "../services/conversationService.ts"
+import { asyncHandler } from "../middleware/asyncHandler.ts"
+import { prisma } from "../db/prisma.ts";
 
 const getConversations = asyncHandler(async (req: Request, res: Response) => {
   if (!req.user?.id) {

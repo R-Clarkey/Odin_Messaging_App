@@ -1,6 +1,6 @@
-import { Request, Response } from 'express'
-import * as userService from "../services/userService"
-import { asyncHandler } from "../middleware/asyncHandler"
+import { type Request, type Response } from 'express'
+import * as userService from "../services/userService.ts"
+import { asyncHandler } from "../middleware/asyncHandler.ts"
 
 const getUsers = asyncHandler(async (req: Request, res: Response) => {
 	const users = await userService.getUsers()

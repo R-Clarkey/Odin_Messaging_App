@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
+import { type Request, type Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { prisma } from '../db/prisma';
+import { prisma } from '../db/prisma.ts';
 
 export const register = async (req: Request, res: Response) => {
   try {

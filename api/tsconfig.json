@@ -10,6 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "typeRoots": ["./node_modules/@types", "./types"],
+    "noEmit": true,
+		"allowImportingTsExtensions": true
   },
   "paths": {
     "@prisma/*": ["generated/prisma/*"]
