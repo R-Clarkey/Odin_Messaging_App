@@ -22,7 +22,7 @@ export default function App() {
 							<Route path="/dashboard" element={<Dashboard />} />
 
 							<Route path="/messages" element={<MessagesLayout />}>
-								<Route index element={<p>Select a conversation</p>} />
+								<Route index element={<p className="p-4">Select a conversation</p>} />
 								<Route path=":conversationId" element={<Conversation />} />
 							</Route>
 						</Route>
