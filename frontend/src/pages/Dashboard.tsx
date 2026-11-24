@@ -1,8 +1,18 @@
+import { useEffect } from "react"
 import { Link } from "react-router"
 import { useAuth } from "../auth/useAuth"
 
 export default function Dashboard() {
 	const { user } = useAuth()
+
+	useEffect(() => {
+		console.log(user)
+	}, [user])
+
+	useEffect(() => {
+	console.log("Dashboard user:", user)
+	console.log("username:", user?.username)
+}, [user])
 
 	return (
 		<main className="grid h-full place-items-center p-6">

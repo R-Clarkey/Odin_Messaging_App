@@ -14,10 +14,11 @@ export function AuthProvider({ children }: { children: ReactNode}) {
     }, [])
 
     async function login(email: string, password: string) {
-        const loggedInUser = await apiConnect("/auth/login", {
+        await apiConnect("/auth/login", {
             method: "POST",
             body: JSON.stringify({email, password})
         })
+        const loggedInUser = await apiConnect("/auth/me")
         setUser(loggedInUser)
     }
 
