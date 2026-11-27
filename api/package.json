@@ -16,7 +16,8 @@
   },
   "type": "module",
   "scripts": {
-    "postinstall": "prisma skills sync || exit 0"
+    "postinstall": "prisma skills sync || exit 0",
+    "start:server": "npx tsx src/server.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

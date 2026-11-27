@@ -30,16 +30,10 @@ export default function Navbar() {
 						to="/dashboard"
 						className="text-lg font-semibold text-white"
 					>
-						My App
+						CommonRoom
 					</Link>
 
 					<div className="ml-auto flex items-center gap-4">
-						{user && (
-							<span className="hidden text-sm text-slate-300 sm:inline">
-								{user.username}
-							</span>
-						)}
-
 						<button
 							type="button"
 							onClick={handleLogout}
