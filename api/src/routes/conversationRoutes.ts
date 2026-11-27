@@ -10,6 +10,8 @@ router.get("/:id", conversationController.getConversation)
 router.patch("/:id", conversationController.updateConversation)
 router.delete("/:id", conversationController.deleteConversation)
 
+router.post("/:id/messages", conversationController.sendMessage)
+
 router.get("/:id/members", conversationController.getMembers)
 router.post("/:id/members", conversationController.addMember)
 router.post("/:id/members/:userId", conversationController.removeMember)

@@ -115,3 +115,16 @@ export async function removeMember(conversationId: string, userId: string) {
     })
     return member
 }
+
+export async function createMessage(content: string, userId: string, conversationId: string) {
+    const message = await prisma.message.create({
+        data: {
+            content, userId, conversationId
+        },
+        include: {
+            user: true,
+            conversation: true
+        }
+    })
+    return message
+}
